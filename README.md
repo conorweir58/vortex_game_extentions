@@ -14,5 +14,5 @@ Any advice/suggestions is appreciated to get the games supported properly for ea
 Each Game follows a similar basic 3 file structure (although more can be added for further functionality):
 
 - A gameart.jpg in a 16/9 format which is displayed on vortex for the game.
-- An info.json containing basic info on the Game Extension: version, author, game name and nexus name
+- An info.json containing basic info on the Game Extension: version, author, game name and description
 - An index.js which contains all of the javascript which tells vortex how to handle the mod support
