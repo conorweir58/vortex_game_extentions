@@ -46,9 +46,18 @@ class BullySE {
 //     }
 // }
 
-function findGame() {
-  return util.GameStoreHelper.findByAppId([SteamAPP_ID])
-      .then(game => game.gamePath);
+async function findGame() {
+    try {
+        const game = await util.GameStoreHelper.findByAppId([SteamAPP_ID]);
+        if (game && game.gamePath) {
+            const exePath = path.join(game.gamePath, 'Bully.exe');
+            log('info', `Detected Steam Bully path: ${exePath}`);
+            return game.gamePath;
+        }
+    } catch (err) {
+        log('error', 'Steam Bully install not found.', err);
+    }
+    throw new Error('Bully Scholarship Edition Steam install not found.');
 }
 
 function prepareForModding(discovery) {
